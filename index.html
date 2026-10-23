@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow" data-publish>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FAZA Dance Studio: студия танцев в Казани (демо)</title>
+<meta name="description" content="Демо-сайт вымышленной студии FAZA Dance Studio. Студия танцев в Казани: дети и взрослые, уровень подготовки не важен. Работа для портфолио.">
+<meta property="og:title" content="Студия танцев в Казани – FAZA Dance Studio (демо)">
+<meta property="og:locale" content="ru_RU">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%23070a0d%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%269%27 fill=%27none%27 stroke=%27%23ff5a1f%27 stroke-width=%273%27/%3E%3Cpath d=%27M16 7a9 9 0 0 0 0 18z%27 fill=%27%23ff5a1f%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700;900&display=swap" rel="stylesheet"></noscript>
+<style>
+  :root {
+    --bg: #070a0d; --surface: #101a1e;
+    --paper: #f3f6f2; --ink: #f4f7f5; --muted: #b9c7c3;
+    --deep: #050807;
+    --accent: #ff5a1f; --accent-ink: #b83700; --blue: #2fd4c0;
+    --font: "Onest", "Segoe UI", system-ui, sans-serif;
+    --m: 24px; --gap: 8px; --radius: 0px;
+    --t-xl: clamp(60px, 8.4vw, 132px);
+    --t-lg: clamp(40px, 6vw, 96px);
+    --t-md: clamp(22px, 2.1vw, 30px);
+    --t-base: 18px; --t-sm: 14px;
+    --sec: clamp(96px, 12vw, 200px);
+    --ease: cubic-bezier(.2, .8, .2, 1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  body { background: var(--bg); color: var(--ink); font: 400 var(--t-base)/1.5 var(--font); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+  ul, ol { list-style: none; }
+  :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+  .pricing :focus-visible, .hero :focus-visible, .say__q :focus-visible { outline-color: var(--deep); }
+  .foot :focus-visible, .list :focus-visible, .wall :focus-visible, .about :focus-visible { outline-color: var(--paper); }
+  ::selection { background: var(--accent); color: var(--deep); }
+  .caps { text-transform: uppercase; font-weight: 900; letter-spacing: -.035em; line-height: .86; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 28px; background: var(--accent); color: var(--deep); font: 700 var(--t-base)/1 var(--font); text-decoration: none; border: 0; cursor: pointer; transition: transform .25s var(--ease), background-color .25s var(--ease); }
+  .btn:hover { transform: translateY(-3px); background: #ff8350; }
+  .btn:active { transform: translateY(0) scale(.98); }
+
+  /* ---- motion: вход частей секции ------------------------------------------------ */
+  .js .rv { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: calc(var(--i, 0) * 80ms); }
+  .js .rv.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .js .rv { opacity: 1; transform: none; transition: none; } .ln > span { transform: none !important; animation: none !important; } }
+
+  /* ---- 1. hero: Waterline headline -------------------------------------------------- */
+  .hero { position: relative; height: 100svh; min-height: 640px; overflow: hidden; }
+  .hero__top, .hero__bot { position: absolute; left: 0; right: 0; }
+  .hero__top { top: 0; bottom: 50%; background: var(--paper); }
+  .hero__bot { top: 50%; bottom: 0; background: var(--accent); }
+  .hl { position: absolute; z-index: 2; left: 0; right: 0; top: 50%; display: grid; justify-items: center; font-size: var(--t-xl); transform: translateY(-75%); text-align: center; color: var(--accent-ink); }
+  .hl .ln { display: block; overflow: hidden; padding: .16em .04em .08em; margin: -.16em 0 -.08em; }
+  .ln > span { position: relative; display: block; transform: translateY(108%); animation: rise .9s var(--ease) forwards; }
+  /* нижняя половина второй строки красится глубоким чёрным: тот же текст в ::after, обрезанный по шву */
+  .ln > span::after { content: attr(data-t); content: attr(data-t) / ""; position: absolute; left: 0; right: 0; top: 0; color: var(--deep); clip-path: inset(100% 0 0 0); }
+  .ln:nth-child(2) > span::after { clip-path: inset(50% 0 0 0); }
+  .ln:nth-child(2) > span { animation-delay: .11s; }
+  @keyframes rise { to { transform: none; } }
+  .nojs .ln > span { transform: none; animation: none; }
+  .hero__brand { position: absolute; z-index: 3; left: var(--m); top: 24px; font: 900 22px/1 var(--font); letter-spacing: -.02em; text-decoration: none; color: var(--deep); min-height: 48px; display: inline-flex; align-items: center; }
+  .hero__brand i { display: inline-block; width: 20px; height: 20px; margin-right: 10px; border-radius: 50%; border: 3px solid var(--accent); position: relative; overflow: hidden; }
+  .hero__go { position: absolute; z-index: 3; right: var(--m); top: 24px; background: var(--accent); }
+  .hero__sub { position: absolute; z-index: 3; left: 50%; bottom: 40px; transform: translateX(-50%); width: min(46ch, calc(100% - 2 * var(--m))); text-align: center; font-size: 20px; line-height: 1.4; color: var(--deep); font-weight: 500; opacity: 0; animation: fade .8s .9s var(--ease) forwards; }
+  .nojs .hero__sub { opacity: 1; animation: none; }
+  @keyframes fade { from { opacity: 0; transform: translate(-50%, 18px); } to { opacity: 1; transform: translate(-50%, 0); } }
+  @media (prefers-reduced-motion: reduce) { .hero__sub { opacity: 1; animation: none; } }
+  @media (max-width: 760px) {
+    .hl { font-size: 11.2vw; }
+    .hero__brand { left: 20px; font-size: 19px; top: 16px; }
+    .hero__go { right: 20px; top: 16px; min-height: 48px; padding: 0 18px; font-size: 16px; }
+    .hero__sub { left: 20px; right: auto; transform: none; width: calc(100% - 40px); text-align: left; font-size: 17px; bottom: 28px; animation-name: fade-m; }
+    @keyframes fade-m { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+  }
+
+  /* ---- 2. intro: плитки-заявления ------------------------------------------------------- */
+  .intro { padding: var(--gap); display: grid; gap: var(--gap); }
+  .board { display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(2, 38svh); gap: var(--gap); }
+  .tile { overflow: hidden; position: relative; }
+  .tile--a { grid-column: 1 / 9; grid-row: 1 / 3; background: var(--blue); color: var(--deep); padding: 20px; display: flex; align-items: flex-end; }
+  .tile--b { grid-column: 9 / 13; grid-row: 1; background: var(--paper); color: var(--accent-ink); padding: 20px; display: flex; align-items: flex-end; }
+  .tile--c { grid-column: 9 / 13; grid-row: 2; }
+  .tile--c img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .tile--c:hover img { transform: scale(1.05); }
+  .tile--a h2, .tile--b p { font-size: var(--t-xl); }
+  .tile--d { background: var(--bg); display: grid; grid-template-columns: repeat(12, 1fr); padding: 40px 20px 0 20px; }
+  .tile--d p { grid-column: 7 / 13; font-size: 20px; line-height: 1.38; max-width: 36em; }
+  .tile--d p + p { margin-top: 1em; }
+  @media (max-width: 760px) {
+    .intro { padding: 20px; gap: 6px; }
+    .board { grid-template-columns: 1fr 1fr; grid-template-rows: 46svh auto; gap: 6px; }
+    .tile--a { grid-column: 1 / 3; grid-row: 1; padding: 16px; }
+    .tile--a h2 { font-size: 11.5vw; }
+    .tile--b { grid-column: 1; grid-row: 2; aspect-ratio: 1; padding: 14px; }
+    .tile--b p { font-size: 11vw; }
+    .tile--c { grid-column: 2; grid-row: 2; aspect-ratio: 1; }
+    .tile--d { display: block; padding: 28px 0 8px; }
+    .tile--d p { font-size: 18px; }
+  }
+
+  /* ---- 3. list: группы и хореографы одним кеглем -------------------------------------------- */
+  .list { padding: var(--sec) var(--m); background: var(--bg); }
+  @media (max-width: 760px) { :root { --m: 20px; } }
+  .list h2 { font-size: var(--t-lg); margin-bottom: 64px; max-width: 12ch; }
+  .tbl { display: grid; font-size: var(--t-md); line-height: 1.5; }
+  .tbl li { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; padding: .35em 0; }
+  .tbl .h { color: var(--accent); font-weight: 700; padding-top: 1.6em; }
+  .tbl li { transition: color .2s var(--ease), padding-left .3s var(--ease); }
+  .tbl li:not(.h):hover { color: var(--accent); padding-left: 12px; }
+  .list__note { margin-top: 48px; font-size: var(--t-md); color: var(--muted); max-width: 40ch; }
+  @media (max-width: 760px) {
+    .list h2 { margin-bottom: 40px; }
+    .tbl li { grid-template-columns: 1fr; gap: 2px; padding: 9px 0; }
+    .tbl li > :first-child { font-size: 22px; font-weight: 700; }
+    .tbl li > :not(:first-child) { font-size: 16px; color: var(--muted); }
+    .tbl .h { padding-top: 24px; font-size: 16px; }
+    .list__note { font-size: 18px; }
+  }
+
+  /* ---- 4. gallery: стена плиток-слов ---------------------------------------------------------- */
+  .wall { padding: var(--gap); background: var(--bg); }
+  .wall h2 { font-size: var(--t-lg); padding: 96px 16px 56px; max-width: 14ch; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); }
+  .cell { aspect-ratio: 1; position: relative; display: grid; place-items: center; overflow: hidden; transition: transform .35s var(--ease); }
+  .cell:hover { transform: translateY(-6px); }
+  .cell b { position: static; font-size: clamp(34px, 5vw, 90px); font-weight: 900; letter-spacing: -.04em; line-height: .9; text-transform: uppercase; text-align: center; max-width: 90%; overflow-wrap: break-word; hyphens: manual; }
+  .cell span { position: absolute; left: 12px; right: 12px; bottom: 18px; text-align: center; font-size: 14px; font-weight: 500; line-height: 1.25; }
+  .cell img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .c1 { background: var(--accent); color: var(--deep); } .c2 { background: var(--blue); color: var(--deep); }
+  .c3 { background: var(--paper); color: var(--accent-ink); } .c4 { background: var(--surface); color: var(--ink); }
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr 1fr; gap: 6px; } .wall { padding: 20px; }
+    .wall h2 { padding: 64px 0 40px; }
+    .cell b { font-size: 10vw; margin-bottom: 24px; } .cell span { font-size: 14px; font-weight: 700; bottom: 10px; line-height: 1.15; }
+  }
+
+  /* ---- 5. pricing: билет -------------------------------------------------------------------- */
+  .pricing { background: var(--blue); color: var(--deep); padding: var(--sec) var(--m); display: grid; justify-items: center; gap: 40px; }
+  .pick { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .pick button { min-height: 56px; padding: 0 26px; font: 700 18px/1 var(--font); background: var(--paper); color: var(--deep); border: 0; cursor: pointer; transition: transform .25s var(--ease), background-color .25s var(--ease); }
+  .pick button:hover { transform: translateY(-3px); }
+  .pick button[aria-pressed="true"] { background: var(--deep); color: var(--paper); }
+  .ticket { width: min(64vw, 1000px); min-width: 320px; aspect-ratio: 2.3 / 1; display: grid; grid-template-columns: 7fr 3fr; background: var(--bg); color: var(--ink); position: relative; }
+  .ticket::before, .ticket::after { content: ""; position: absolute; left: 70%; width: 28px; height: 28px; border-radius: 50%; background: var(--blue); transform: translateX(-50%); }
+  .ticket::before { top: -14px; } .ticket::after { bottom: -14px; }
+  .ticket__perf { position: absolute; left: 70%; top: 22px; bottom: 22px; width: 6px; transform: translateX(-50%); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='16'%3E%3Ccircle cx='3' cy='8' r='3' fill='%232fd4c0'/%3E%3C/svg%3E"); background-size: 6px 16px; background-repeat: repeat-y; }
+  .ticket__main { padding: 40px; display: flex; flex-direction: column; justify-content: space-between; }
+  .ticket__main h2 { font-size: clamp(28px, 4vw, 64px); }
+  .ticket__lines { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 32px; font-size: 16px; color: var(--muted); }
+  .ticket__stub { padding: 24px; display: grid; align-content: center; justify-items: stretch; gap: 20px; text-align: center; }
+  .ticket__price { white-space: nowrap; font-size: clamp(28px, 3.3vw, 60px); font-weight: 900; letter-spacing: -.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .ticket__stub .btn { width: 100%; }
+  .pricing__also { font-size: var(--t-md); font-weight: 500; text-align: center; max-width: 36ch; }
+  @media (max-width: 860px) {
+    .pick { width: 100%; flex-wrap: nowrap; } .pick button { flex: 1 1 0; padding: 0 10px; font-size: 16px; }
+    .ticket { width: calc(100% - 8px); aspect-ratio: auto; grid-template-columns: 1fr; grid-template-rows: auto 28px auto auto; }
+    .ticket__main { display: contents; }
+    .ticket__main h2 { order: 1; padding: 28px 24px 24px; }
+    .ticket__perf { order: 2; }
+    .ticket__stub { order: 3; }
+    .ticket__lines { order: 4; padding: 0 24px 28px; }
+    .ticket::before, .ticket::after { display: none; }
+    .ticket__perf { position: relative; left: auto; top: auto; bottom: auto; width: auto; height: 28px; transform: none; background: none; }
+    .ticket__perf::before, .ticket__perf::after { content: ""; position: absolute; top: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--blue); }
+    .ticket__perf::before { left: -14px; } .ticket__perf::after { right: -14px; }
+    .ticket__perf { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='6'%3E%3Ccircle cx='8' cy='3' r='3' fill='%232fd4c0'/%3E%3C/svg%3E"); background-size: 16px 6px; background-repeat: repeat-x; background-position: 28px 11px; }
+    .ticket__main h2 { font-size: 9vw; }
+    .ticket__lines { grid-template-columns: 1fr; font-size: 16px; }
+    .ticket__price { font-size: 16vw; }
+    .ticket__stub { padding: 12px 24px 28px; }
+  }
+
+  /* ---- 6. about: две колонки, выделенные слова ------------------------------------------------ */
+  .about { padding: var(--sec) var(--m); background: var(--bg); }
+  .about h2 { font-size: var(--t-lg); margin-bottom: 56px; }
+  .about__txt { columns: 2; column-gap: 32px; text-align: justify; hyphens: auto; font-size: clamp(22px, 2.1vw, 32px); line-height: 1.22; color: var(--muted); }
+  .about__txt b { color: var(--ink); font-weight: 700; }
+  .about__txt mark { color: var(--deep); padding: 0 .1em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .m1 { background: var(--accent); } .m2 { background: var(--blue); } .m3 { background: var(--paper); }
+  .about__go { display: inline-block; margin-top: .6em; color: var(--deep); background: var(--accent); text-decoration: none; padding: 0 .1em; font-weight: 700; transition: background-color .25s var(--ease); }
+  .about__go:hover { background: #ff8350; }
+  @media (max-width: 760px) {
+    .about__txt { columns: 1; text-align: left; font-size: 20px; line-height: 1.28; hyphens: manual; }
+    .about__go { display: block; margin-top: 24px; padding: 14px 8px; }
+  }
+
+  /* ---- 7. testimonial ------------------------------------------------------------------------- */
+  .say { display: grid; grid-template-columns: 5fr 7fr; min-height: 70svh; }
+  .say__who { background: var(--surface); padding: 32px; display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; }
+  .say__who b { font-size: 20px; font-weight: 500; line-height: 1.3; }
+  .say__q { background: var(--accent); color: var(--deep); padding: 48px; }
+  .say__q p { font-size: clamp(28px, 2.5vw, 36px); font-weight: 700; line-height: 1.18; max-width: 22ch; letter-spacing: -.01em; }
+  @media (max-width: 760px) {
+    .say { grid-template-columns: 1fr; min-height: 0; }
+    .say__q { order: -1; padding: 32px 20px 96px; }
+    .say__q p { font-size: 24px; }
+    .say__who { padding: 20px; }
+  }
+
+  /* ---- 8. cta: инверсия ---------------------------------------------------------------------- */
+  .cta { background: var(--paper); color: var(--deep); min-height: 72svh; padding: var(--m); display: grid; grid-template-rows: 1fr auto; }
+  .cta h2 { font-size: clamp(56px, 10vw, 150px); padding-top: 64px; max-width: 10ch; }
+  .cta__row { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; align-items: end; padding-bottom: 16px; }
+  .cta__row p { grid-column: 1 / 6; font-size: 20px; font-weight: 500; max-width: 34ch; }
+  .cta__row .btn { grid-column: 10 / 13; justify-self: end; width: 100%; }
+  @media (max-width: 1000px) { .cta { min-height: 64svh; } }
+  @media (max-width: 760px) {
+    .cta { min-height: 80svh; }
+    .cta h2 { font-size: 15vw; padding-top: 40px; }
+    .cta__row { display: block; }
+    .cta__row p { font-size: 17px; margin-bottom: 20px; }
+    .cta__row .btn { width: 100%; }
+  }
+
+  /* ---- 9. footer: фото и меню -------------------------------------------------------------- */
+  .foot { display: grid; grid-template-columns: 1fr 1fr; min-height: 100svh; background: var(--bg); }
+  .foot__ph { overflow: hidden; position: relative; }
+  .foot__ph img { position: absolute; inset: -8% 0; width: 100%; height: 116%; object-fit: cover; will-change: transform; }
+  .foot__r { padding: 40px 40px 24px; display: flex; flex-direction: column; background: var(--bg); }
+  .foot__brand { display: inline-flex; align-items: center; min-height: 48px; width: fit-content; font: 900 40px/1 var(--font); letter-spacing: -.03em; text-decoration: none; }
+  .foot__brand i { display: inline-block; width: 34px; height: 34px; margin-right: 14px; border-radius: 50%; border: 4px solid var(--accent); position: relative; overflow: hidden; }
+  .hero__brand i::before, .foot__brand i::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 50%; background: var(--accent); }
+  .foot__brand small { margin-left: 12px; font: 500 16px/1 var(--font); letter-spacing: 0; color: var(--muted); }
+  .foot nav { margin-top: 56px; display: grid; gap: 28px; }
+  .foot nav a { min-height: 44px; font-size: clamp(30px, 2.6vw, 44px); font-weight: 900; letter-spacing: -.02em; text-decoration: none; text-transform: uppercase; transition: transform .3s var(--ease), color .3s var(--ease); display: inline-block; width: fit-content; line-height: 1.1; }
+  .foot nav:hover a { color: var(--muted); }
+  .foot nav a:hover { transform: translateX(12px); color: var(--ink); }
+  .foot__blocks { margin-top: 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; font-size: 16px; color: var(--muted); }
+  .foot__blocks b { color: var(--ink); display: block; font-weight: 700; margin-bottom: 6px; font-size: 16px; }
+  .foot__blocks a { display: inline-flex; min-height: 44px; align-items: center; }
+  .foot__legal { margin-top: auto; padding-top: 48px; font-size: 14px; color: var(--muted); }
+  @media (max-width: 860px) {
+    .foot { grid-template-columns: 1fr; min-height: 0; }
+    .foot__ph { height: 50svh; } .foot__r { padding: 32px 20px 20px; }
+    .foot nav { gap: 20px; margin-top: 32px; } .foot nav a { font-size: 8vw; }
+    .foot__blocks { margin-top: 40px; grid-template-columns: 1fr; gap: 24px; }
+  }
+</style>
+<script>document.documentElement.className = 'js';</script>
+<noscript><style>.ln > span { transform: none !important; animation: none !important; } .hero__sub { opacity: 1 !important; animation: none !important; } .js .rv { opacity: 1; transform: none; }</style></noscript>
+</head>
+<body>
+
+<main>
+  <!-- 1 · hero: два поля, шов через вторую строку -->
+  <header class="hero" id="top">
+    <a class="hero__brand" href="#top"><i aria-hidden="true"></i>FAZA</a>
+    <a class="btn hero__go" href="https://wa.me/79000000000" rel="noopener">Записаться</a>
+    <div class="hero__top" aria-hidden="true"></div>
+    <div class="hero__bot" aria-hidden="true"></div>
+    <h1 class="hl caps"><span class="ln"><span data-t="Студия танцев">Студия танцев</span></span><span class="ln"><span data-t="в Казани">в Казани</span></span></h1>
+    <p class="hero__sub">FAZA Dance Studio: дети и взрослые, с 2016 года. Уровень подготовки не важен.</p>
+  </header>
+
+  <!-- 2 · intro: плитки -->
+  <section class="intro" aria-label="Коротко о студии">
+    <div class="board">
+      <div class="tile tile--a"><h2 class="caps rv">Тут танцуют все</h2></div>
+      <div class="tile tile--b"><p class="caps rv" style="--i:1">С 2016</p></div>
+      <div class="tile tile--c"><img src="assets/ph-intro.webp" alt="Группа студии FAZA репетирует в зале" width="1600" height="1200" loading="lazy"></div>
+    </div>
+    <div class="tile tile--d">
+      <div style="grid-column: 7 / 13;" class="rv">
+        <p>FAZA Dance Studio – студия танцев с собственным ярким стилем и энергетикой. Работает с 2016 года, ученики выступают на городских концертах и открытых турнирах.</p>
+        <p>Приглашаем детей и взрослых. Уровень подготовки не важен: своё место найдут и новички, и опытные танцоры. Мы рады видеть всех.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · list: группы и хореографы -->
+  <section class="list" id="gruppy" aria-labelledby="h-gruppy">
+    <h2 id="h-gruppy" class="caps rv">Группы и хореографы</h2>
+    <ul class="tbl">
+      <li class="h"><span>Группа</span><span>Хореограф</span></li>
+      <li><span>Дети до 11 лет</span><span>Марина Ветрова</span></li>
+      <li><span>Подростки</span><span>Илья Громов</span></li>
+      <li><span>K-POP</span><span>Дина Пак</span></li>
+      <li><span>Студия в целом</span><span>Артём Лавров, основатель</span></li>
+      <li><span>Запись и вопросы</span><span>Администратор FAZA</span></li>
+    </ul>
+    <p class="list__note">Расписание групп назовём при записи. Для взрослых и подростков напишите возраст, подскажем группу.</p>
+  </section>
+
+  <!-- 4 · gallery: стена плиток (события и цифры из ВК и Яндекс Карт) -->
+  <section class="wall" id="afisha" aria-labelledby="h-afisha">
+    <h2 id="h-afisha" class="caps rv">Афиша FAZA</h2>
+    <div class="grid rv">
+      <div class="cell c1"><b>500 ₽</b><span>пробное занятие, засчитываем в абонемент</span></div>
+      <div class="cell c2" style="--i:1"><b>3 зала</b><span>с зеркалами и мягким полом</span></div>
+      <div class="cell rv" style="--i:2"><img src="assets/ph-g1.webp" alt="Группа студии FAZA на сцене в финальной позе" width="1000" height="1000" loading="lazy"></div>
+      <div class="cell c3" style="--i:3"><b>Старт</b><span>отчётный концерт, весна 2025</span></div>
+      <div class="cell c4"><b>Camp</b><span>летний лагерь FAZA, 2025</span></div>
+      <div class="cell rv" style="--i:2"><img src="assets/ph-g2.webp" alt="Дети танцуют на лужайке в летнем лагере студии рядом с хореографом" width="1000" height="1000" loading="lazy"></div>
+      <div class="cell c1" style="--i:1"><b>Нон-стоп</b><span>большой концерт, 2026</span></div>
+      <div class="cell c2" style="--i:3"><b>10 лет</b><span>юбилейная вечеринка</span></div>
+      <div class="cell c3"><b>12</b><span>направлений в расписании</span></div>
+      <div class="cell rv" style="--i:1"><img src="assets/ph-g3.webp" alt="Танцоры студии FAZA на сцене в цветном свете" width="1000" height="1000" loading="lazy"></div>
+      <div class="cell c4" style="--i:2"><b>от 4 лет</b><span>с какого возраста берём</span></div>
+      <div class="cell c1" style="--i:3"><b>K-POP</b><span>направление студии</span></div>
+    </div>
+  </section>
+
+  <!-- 5 · pricing: билет. Живая вещь: выбор «ребёнок / взрослый» -->
+  <section class="pricing" id="abonement" aria-labelledby="h-ab">
+    <div class="pick rv" role="group" aria-label="Для кого абонемент">
+      <button type="button" data-k="kid" aria-pressed="true">Ребёнок до 11 лет</button>
+      <button type="button" data-k="adult" aria-pressed="false">Взрослый</button>
+    </div>
+    <div class="ticket rv" style="--i:1">
+      <div class="ticket__main">
+        <h2 id="h-ab" class="caps" data-title>Детский абонемент</h2>
+        <ul class="ticket__lines">
+          <li data-who>Для детей до 11 лет</li>
+          <li>Восемь занятий в месяц</li>
+          <li>Пробное занятие: 500 ₽, засчитывается в абонемент</li>
+          <li>Расписание групп: при записи</li>
+        </ul>
+      </div>
+      <i class="ticket__perf" aria-hidden="true"></i>
+      <div class="ticket__stub">
+        <div class="ticket__price" data-price>3 600 ₽</div>
+        <a class="btn" data-go href="https://wa.me/79000000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%20%D1%80%D0%B5%D0%B1%D1%91%D0%BD%D0%BA%D0%B0%20%D0%BD%D0%B0%20%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%B8%D0%B5" rel="noopener">Записаться</a>
+      </div>
+    </div>
+    <p class="pricing__also rv">Детский 3 600 ₽, взрослый 4 200 ₽, фирменная футболка 1 500 ₽</p>
+  </section>
+
+  <!-- 6 · about -->
+  <section class="about" id="o-studii" aria-labelledby="h-about">
+    <h2 id="h-about" class="caps rv">О студии</h2>
+    <p class="about__txt rv" style="--i:1"><b>FAZA</b> – студия с <mark class="m1">собственным стилем</mark>, с <mark class="m2">2016 года</mark>. Занимаются <mark class="m1">дети и взрослые</mark>, ученики выступают на <mark class="m3">концертах и турнирах</mark>, летом едут в <mark class="m2">свой лагерь</mark>. Начать можно с нуля: <b>подготовка не важна</b>. <a class="about__go" href="https://wa.me/79000000000" rel="noopener">Напишите, найдём вашу группу.</a></p>
+  </section>
+
+  <!-- 7 · отзыв с Яндекс Карт -->
+  <section class="say" aria-label="Пример отзыва">
+    <div class="say__who">
+      <b>Пример отзыва для демо-сайта. Здесь будет настоящий отзыв ученика или родителя.</b>
+    </div>
+    <blockquote class="say__q"><p class="rv">«Дочь пришла стесняться, а через два месяца вышла на сцену.»</p></blockquote>
+  </section>
+
+  <!-- 8 · cta -->
+  <section class="cta" id="zapis" aria-labelledby="h-cta">
+    <h2 id="h-cta" class="caps rv">Приходите как есть</h2>
+    <div class="cta__row">
+      <p class="rv">Напишите возраст и удобные дни. Ответим группой, временем и ценой абонемента.</p>
+      <a class="btn rv" style="--i:1" href="https://wa.me/79000000000" rel="noopener">Записаться в WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<!-- 9 · footer -->
+<footer class="foot">
+  <div class="foot__ph"><img src="assets/ph-foot.webp" alt="Три ученицы студии смеются и обнимаются после занятия" width="1200" height="1600" loading="lazy"></div>
+  <div class="foot__r">
+    <a class="foot__brand" href="#top"><i aria-hidden="true"></i>FAZA<small>Dance Studio</small></a>
+    <nav aria-label="Разделы">
+      <a href="#gruppy">Группы</a><a href="#afisha">Афиша</a><a href="#abonement">Абонемент</a><a href="#o-studii">О студии</a><a href="#zapis">Записаться</a>
+    </nav>
+    <div class="foot__blocks">
+      <div><b>Адрес</b>ул. Примерная, 1,<br>Казань (вымышленный адрес)<br><a href="tel:+79000000000">+7 (900) 000-00-00</a></div>
+      <div><b>Мы в сети</b><a href="#zapis">Telegram</a><br><a href="#zapis">ВКонтакте</a></div>
+    </div>
+    <p class="foot__legal">Демо-проект: студия FAZA вымышленная, адрес, телефон и отзыв условные. Работа для портфолио.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // вход частей секции: по одному, когда блок попадает в экран
+  var rv = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .15 });
+    rv.forEach(function (el) { io.observe(el); });
+  } else { rv.forEach(function (el) { el.classList.add('in'); }); }
+
+  // живая вещь: билет меняется от выбора «ребёнок / взрослый», кнопка пишет в WhatsApp с нужным текстом
+  var data = {
+    kid:   { title: 'Детский абонемент',   who: 'Для детей до 11 лет',      price: '3 600 ₽', msg: 'Здравствуйте! Хочу записать ребёнка на занятие' },
+    adult: { title: 'Взрослый абонемент', who: 'Для взрослых, опыт не нужен', price: '4 200 ₽', msg: 'Здравствуйте! Хочу записаться на занятие' }
+  };
+  var btns = document.querySelectorAll('.pick button');
+  var el = { t: document.querySelector('[data-title]'), w: document.querySelector('[data-who]'), p: document.querySelector('[data-price]'), g: document.querySelector('[data-go]') };
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var d = data[b.dataset.k];
+      btns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      el.t.textContent = d.title; el.w.textContent = d.who; el.p.textContent = d.price;
+      el.g.href = 'https://wa.me/79000000000?text=' + encodeURIComponent(d.msg);
+      if (!reduce) { el.p.animate([{ transform: 'translateY(14px)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 380, easing: 'cubic-bezier(.2,.8,.2,1)' }); }
+    });
+  });
+
+  // движущаяся картинка: фото в подвале медленно смещается при прокрутке
+  var ph = document.querySelector('.foot__ph img'), ticking = false;
+  function drift() {
+    var r = ph.parentNode.getBoundingClientRect(), vh = innerHeight;
+    var k = Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh / 2) / vh));
+    ph.style.transform = 'translateY(' + (k * 6).toFixed(2) + '%)'; ticking = false;
+  }
+  if (!reduce) { addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(drift); } }, { passive: true }); drift(); }
+})();
+</script>
+</body>
+</html>
